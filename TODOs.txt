@@ -1,8 +1,0 @@
-
-
-WEB ENG. - TODOs:
-
-1) Load and diplay Questions into HTML
-2) Submit answer to Servlet
-3) Save session answers/score in Java Beans
-4) ...
