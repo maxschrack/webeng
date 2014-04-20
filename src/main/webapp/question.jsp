@@ -4,8 +4,9 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 
-<jsp:useBean id="testQuestion" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleQuestion" scope="session"/>
-<jsp:useBean id="testCategory" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleCategory" scope="session"/>
+<jsp:useBean id="question" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleQuestion" scope="session"/>
+<jsp:useBean id="category" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleCategory" scope="session"/>
+<jsp:useBean id="game" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleGame" scope="session"/>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
     <head>
@@ -30,38 +31,51 @@
         <section role="main">
             <section id="roundinfo" aria-labelledby="roundinfoheading">
                 <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
+                <% int questionNr = game.getQuestionNr(); %>
                 <div id="player1info">
                     <span id="player1name">Spieler 1</span>
                     <ul class="playerroundsummary">
-                        <li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
-                        <li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+                    <%for(int i=0; i<3;i++){ %>
+                    	<% if(i>=questionNr){ %>
+                    		<li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+                    	<%}else if(game.isQuestionCorrectPlayer1(i)==true){ %>
+                        	<li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
+                        <%}else{ %>
+                        	<li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
+                    	<%} %>
+                    <%} %>
                     </ul>
                 </div>
                 <div id="player2info">
                     <span id="player2name">Spieler 2</span>
                     <ul class="playerroundsummary">
-                        <li><span class="accessibility">Frage 1:</span><span id="player2answer1" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 2:</span><span id="player2answer2" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 3:</span><span id="player2answer3" class="unknown">Unbekannt</span></li>
+                       <%for(int i=0; i<3;i++){ %>
+                    	<% if(i>=questionNr){ %>
+                    		<li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+                    	<%}else if(game.isQuestionCorrectPlayer1(i)==true){ %>
+                        	<li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
+                        <%}else{ %>
+                        	<li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
+                    	<%} %>
+                    <%} %>
                     </ul>
                 </div>
-                <div id="currentcategory"><span class="accessibility">Kategorie:</span><%= testCategory.getName() %></div>
+                <div id="currentcategory"><span class="accessibility">Kategorie:</span><%= category.getName() %></div>
             </section>
             
             <!-- Question -->
             <section id="question" aria-labelledby="questionheading">
                 
-                <form id="questionform" action="question.jsp" method="GET">
+                <form id="questionform" action="BigQuizServlet" method="POST">
                     <h2 id="questionheading" class="accessibility">Frage</h2>
-                    <p id="questiontext"><%= testQuestion.getText() %></p>
-                   	<% List<Choice> choices = testQuestion.getAllChoices(); %>
-                   	
+                    <p id="questiontext"><%= question.getText() %></p>
+                   	<% List<Choice> choices = question.getAllChoices(); %>
                     <ul id="answers">
-                    <% int i = 1; %>
+                    <% int i = 0; %>
                     <% for(Choice c : choices){ %>
-                    	<li><input id="option" type="checkbox"/><label for="option1"><%= c.getText() %></label></li>
-                    <% } %>
+                    	<li><input id="<%=c.getId()%>" value="<%=c.getId()%>" name="option" type="checkbox"/><label for="<%=c.getId()%>"><%= c.getText() %></label></li>
+                    <%i++; %>
+                    <%} %>
                     </ul>
                     <input id="timeleftvalue" type="hidden" value="100"/>
                     <input id="next" type="submit" value="weiter" accesskey="s"/>
@@ -73,7 +87,6 @@
                 <p><span id="timeleftlabel">Verbleibende Zeit:</span> <time id="timeleft">00:30</time></p>
                 <meter id="timermeter" min="0" low="20" value="100" max="100"/>
             </section>
-            
             <section id="lastgame">
                 <p>Letztes Spiel: Nie</p>
             </section>
