@@ -8,19 +8,22 @@ public class SimpleGame{
 	private int round; //current Round (between 0 and 4)
 	private boolean[] player1Score ={false,false,false};
 	private boolean[] player2Score ={false,false,false};
-	private RoundScore[] roundScores ={RoundScore.OFFEN,RoundScore.OFFEN,RoundScore.OFFEN,RoundScore.OFFEN,RoundScore.OFFEN};
-	
+	private RoundScore[] roundScores ={RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN};
+	private int roundTimePlayer1;//time taken to answer all questions in a round
+	private int roundTimePlayer2;
 
 	public enum RoundScore{
-		SPIELER1,
-		SPIELER2,
-		UNENTSCHIEDEN,
-		OFFEN;
+		PLAYER1,
+		PLAYER2,
+		TIE,
+		OPEN;
 	}
 	
 	public SimpleGame(){
 		this.round = 0;
 		this.questionNr = 0;
+		this.roundTimePlayer1 = 0;
+		this.roundTimePlayer2 = 0;
 	}
 	/**
 	 * @param questionNr the questionNr to set
@@ -30,11 +33,13 @@ public class SimpleGame{
 	}
 
 	/**
-	 * @param round the round to set
+	 *  prepares values for the next round
 	 */
-	public void nextRound() {
+	public void nextRound(){
 		this.round++;
-		this.questionNr=0;
+		this.questionNr = 0;
+		this.roundTimePlayer1 = 0;
+		this.roundTimePlayer2 = 0;
 	}
 
 	/**
@@ -77,6 +82,43 @@ public class SimpleGame{
 	 */
 	public boolean isQuestionCorrectPlayer2(int questionNumber) {
 		return player2Score[questionNumber];
+	}
+	/**
+	 * @return the roundTimePlayer1
+	 */
+	public int getRoundTimePlayer1() {
+		return roundTimePlayer1;
+	}
+	/**
+	 * @param roundTimePlayer1 the roundTimePlayer1 to set
+	 */
+	public void addRoundTimePlayer1(int questionTime) {
+		this.roundTimePlayer1 += questionTime;
+	}
+	/**
+	 * @return the roundTimePlayer2
+	 */
+	public int getRoundTimePlayer2() {
+		return roundTimePlayer2;
+	}
+	/**
+	 * @param roundTimePlayer2 the roundTimePlayer2 to set
+	 */
+	public void addRoundTimePlayer2(int questionTime) {
+		this.roundTimePlayer2 += questionTime;
+	}
+	/**
+	 * @return the roundScores
+	 */
+	public RoundScore getRoundScore(int roundNr) {
+		return roundScores[roundNr];
+	}
+	
+	/**
+	 * sets the Round score
+	 */
+	public void setRoundScore(RoundScore roundResult){
+		roundScores[round]=roundResult;
 	}
 
 }

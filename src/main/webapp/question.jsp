@@ -7,6 +7,8 @@
 <jsp:useBean id="question" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleQuestion" scope="session"/>
 <jsp:useBean id="category" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleCategory" scope="session"/>
 <jsp:useBean id="game" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleGame" scope="session"/>
+<jsp:useBean id="player1" class="at.ac.tuwien.big.we14.lab2.api.impl.SimplePlayer" scope="session"/>
+<jsp:useBean id="player2" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleGameComputer" scope="session"/>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
     <head>
@@ -33,7 +35,7 @@
                 <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
                 <% int questionNr = game.getQuestionNr(); %>
                 <div id="player1info">
-                    <span id="player1name">Spieler 1</span>
+                    <span id="player1name"><%=player1.getName()%></span>
                     <ul class="playerroundsummary">
                     <%for(int i=0; i<3;i++){ %>
                     	<% if(i>=questionNr){ %>
@@ -47,12 +49,12 @@
                     </ul>
                 </div>
                 <div id="player2info">
-                    <span id="player2name">Spieler 2</span>
+                    <span id="player2name"><%=player2.getName()%></span>
                     <ul class="playerroundsummary">
                        <%for(int i=0; i<3;i++){ %>
                     	<% if(i>=questionNr){ %>
                     		<li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
-                    	<%}else if(game.isQuestionCorrectPlayer1(i)==true){ %>
+                    	<%}else if(game.isQuestionCorrectPlayer2(i)==true){ %>
                         	<li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
                         <%}else{ %>
                         	<li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
@@ -77,7 +79,7 @@
                     <%i++; %>
                     <%} %>
                     </ul>
-                    <input id="timeleftvalue" type="hidden" value="100"/>
+                    <input id="timeleftvalue" name="timeleftvalue" type="hidden" value="100"/>
                     <input id="next" type="submit" value="weiter" accesskey="s"/>
                 </form>
             </section>
