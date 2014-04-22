@@ -1,7 +1,5 @@
 package at.ac.tuwien.big.we14.lab2.api.impl;
 
-import at.ac.tuwien.big.we14.lab2.api.Game;
-
 public class SimpleGame{
 
 	private int questionNr; //current Question (between 0 and 2)

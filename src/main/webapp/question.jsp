@@ -76,7 +76,7 @@
                     <% int i = 0; %>
                     <% for(Choice c : choices){ %>
                     	<li><input id="<%=c.getId()%>" value="<%=c.getId()%>" name="option" type="checkbox"/><label for="<%=c.getId()%>"><%= c.getText() %></label></li>
-                    <%i++; %>
+                    	<%i++; %>
                     <%} %>
                     </ul>
                     <input id="timeleftvalue" name="timeleftvalue" type="hidden" value="100"/>
