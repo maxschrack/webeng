@@ -110,7 +110,7 @@ public class BigQuizServlet extends HttpServlet {
 		// retrieve attributes from request
 		SimpleQuestion answeredQuestion = (SimpleQuestion) session.getAttribute("question");
 		// retrieve selected answers by user
-		if (request.getAttribute("option") != null) {
+		if (request.getParameterValues("option") != null) {
 			/**
 			 * player marked answers
 			 */
@@ -122,7 +122,7 @@ public class BigQuizServlet extends HttpServlet {
 			List<Choice> correctAnswers = answeredQuestion.getCorrectChoices();
 			if (correctAnswers.size() == playerAnswers.size()) {
 				for (Choice c : correctAnswers) {
-					if (!playerAnswers.contains(c.getText())) {
+					if (!playerAnswers.contains(c.getId())) {
 						currentGame.setPlayer1Score(questionNr, false);
 						currentGame.addRoundTimePlayer1(0);
 						break;
