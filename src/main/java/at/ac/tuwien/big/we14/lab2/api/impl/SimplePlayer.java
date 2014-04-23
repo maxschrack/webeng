@@ -7,7 +7,7 @@ public class SimplePlayer implements Player {
 	private String name;
 	
 	public SimplePlayer(){
-		this.name = "You";
+		this.name = "Spieler 1";
 	}
 
 	/**

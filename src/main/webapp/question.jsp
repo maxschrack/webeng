@@ -39,11 +39,11 @@
                     <ul class="playerroundsummary">
                     <%for(int i=0; i<3;i++){ %>
                     	<% if(i>=questionNr){ %>
-                    		<li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+                    		<li><span class="accessibility">Frage <%=i%>:</span><span id="player1answer<%=i%>" class="unknown">Unbekannt</span></li>
                     	<%}else if(game.isQuestionCorrectPlayer1(i)==true){ %>
-                        	<li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
+                        	<li><span class="accessibility">Frage <%=i%>:</span><span id="player1answer<%=i%>" class="correct">Richtig</span></li>
                         <%}else{ %>
-                        	<li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
+                        	<li><span class="accessibility">Frage <%=i%>:</span><span id="player1answer<%=i%>" class="incorrect">Falsch</span></li>
                     	<%} %>
                     <%} %>
                     </ul>
@@ -53,11 +53,11 @@
                     <ul class="playerroundsummary">
                        <%for(int i=0; i<3;i++){ %>
                     	<% if(i>=questionNr){ %>
-                    		<li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+                    		<li><span class="accessibility">Frage <%=i%>:</span><span id="player2answer<%=i%>" class="unknown">Unbekannt</span></li>
                     	<%}else if(game.isQuestionCorrectPlayer2(i)==true){ %>
-                        	<li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
+                        	<li><span class="accessibility">Frage <%=i%>:</span><span id="player2answer<%=i%>" class="correct">Richtig</span></li>
                         <%}else{ %>
-                        	<li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
+                        	<li><span class="accessibility">Frage <%=i%>:</span><span id="player2answer<%=i%>" class="incorrect">Falsch</span></li>
                     	<%} %>
                     <%} %>
                     </ul>
@@ -69,13 +69,14 @@
             <section id="question" aria-labelledby="questionheading">
                 
                 <form id="questionform" action="BigQuizServlet" method="POST">
+                	<input type="hidden" id="questionid" value="<%=question.getId()%>" />
                     <h2 id="questionheading" class="accessibility">Frage</h2>
                     <p id="questiontext"><%= question.getText() %></p>
                    	<% List<Choice> choices = question.getAllChoices(); %>
                     <ul id="answers">
                     <% int i = 0; %>
                     <% for(Choice c : choices){ %>
-                    	<li><input id="<%=c.getId()%>" value="<%=c.getId()%>" name="option" type="checkbox"/><label for="<%=c.getId()%>"><%= c.getText() %></label></li>
+                    	<li><input id="<%=c.getId()%>" value="<%=c.getId()%>" name="option" type="checkbox"/><label id="labeloption<%=i%>" for="<%=c.getId()%>"><%= c.getText() %></label></li>
                     	<%i++; %>
                     <%} %>
                     </ul>

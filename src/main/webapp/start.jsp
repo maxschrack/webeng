@@ -19,8 +19,10 @@
         </nav>
         
         <section role="main" id="quiz">
-          <a id="startgame" href="BigQuizServlet?action=start">Quiz starten</a>
-          <!-- <a id="startgame" href="question.jsp">Quiz starten</a>  -->
+        	<form action="BigQuizServlet" method="GET">
+        		<input type="hidden" name="action" value="start" />
+        		<input type="submit" id="startgame" value="Quiz starten"/>
+			</form>
         </section>
         <!-- footer -->
         <footer role="contentinfo">© 2014 BIG Quiz</footer>

@@ -447,6 +447,7 @@ public class SeleniumTest {
 	public void tearDown() throws Exception {
 		driver.quit();
 	}
+	
 
 	/**
 	 * tests the game according to some of the specifications of lab2. (Check

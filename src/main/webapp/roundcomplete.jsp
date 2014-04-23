@@ -36,29 +36,31 @@
                 <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
                 <% int questionNr = game.getQuestionNr(); %>
                 <div id="player1info">
+                	<input type="hidden" id="player1wonrounds" value="<%=request.getAttribute("player1Rounds")%>" />
                     <span id="player1name"><%=player1.getName()%></span>
                     <ul class="playerroundsummary">
                     <%for(int i=0; i<3;i++){ %>
                     	<% if(i>=questionNr){ %>
-                    		<li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+                    		<li><span class="accessibility">Frage <%=i%>:</span><span id="player1answer<%=i%>" class="unknown">Unbekannt</span></li>
                     	<%}else if(game.isQuestionCorrectPlayer1(i)==true){ %>
-                        	<li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
+                        	<li><span class="accessibility">Frage <%=i%>:</span><span id="player1answer<%=i%>" class="correct">Richtig</span></li>
                         <%}else{ %>
-                        	<li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
+                        	<li><span class="accessibility">Frage <%=i%>:</span><span id="player1answer<%=i%>" class="incorrect">Falsch</span></li>
                     	<%} %>
                     <%} %>
                     </ul>
                 </div>
                 <div id="player2info">
+                	<input type="hidden" id="player2wonrounds" value="<%=request.getAttribute("player2Rounds")%>" />
                     <span id="player2name"><%=player2.getName()%></span>
                     <ul class="playerroundsummary">
                        <%for(int i=0; i<3;i++){ %>
                     	<% if(i>=questionNr){ %>
-                    		<li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+                    		<li><span class="accessibility">Frage <%=i%>:</span><span id="player2answer<%=i%>" class="unknown">Unbekannt</span></li>
                     	<%}else if(game.isQuestionCorrectPlayer2(i)==true){ %>
-                        	<li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
+                        	<li><span class="accessibility">Frage <%=i%>:</span><span id="player2answer<%=i%>" class="correct">Richtig</span></li>
                         <%}else{ %>
-                        	<li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
+                        	<li><span class="accessibility">Frage <%=i%>:</span><span id="player2answer<%=i%>" class="incorrect">Falsch</span></li>
                     	<%} %>
                     <%} %>
                     </ul>

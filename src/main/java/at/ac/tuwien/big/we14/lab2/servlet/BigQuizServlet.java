@@ -45,13 +45,17 @@ public class BigQuizServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String action = request.getParameter("action");
-
-		if (action == null) {
-			return;
+		if (request.getParameter("action") == null) {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/start.jsp");
+			dispatcher.forward(request, response);
 		}
 		
-
+		String action = request.getParameter("action");
+		
+		if(action == null){
+			return ;
+		}
+		
 		// get session
 		HttpSession session = request.getSession(true);
 		
@@ -224,8 +228,7 @@ public class BigQuizServlet extends HttpServlet {
 				request.setAttribute("gameOverMessage", gameOverMessage);
 				request.setAttribute("player1Rounds", player1Rounds);
 				request.setAttribute("player2Rounds", player2Rounds);
-				RequestDispatcher dispatcher = getServletContext()
-						.getRequestDispatcher("/finish.jsp");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/finish.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
@@ -252,7 +255,8 @@ public class BigQuizServlet extends HttpServlet {
 	 */
 	public void generateQuestion(HttpSession session) {
 		@SuppressWarnings("unchecked")
-		List<Question> freeQuestions = (List<Question>) session.getAttribute("freeQuestions");
+		ArrayList<Question> freeQuestions = new ArrayList<Question>((List<Question>) session.getAttribute("freeQuestions"));
+		//List<Question> freeQuestions = (List<Question>) session.getAttribute("freeQuestions");
 		// get random Question from the list
 		SimpleQuestion newQuestion = (SimpleQuestion) freeQuestions.get((int) (Math.random() * freeQuestions.size()));
 		// remove chosen question from free question list

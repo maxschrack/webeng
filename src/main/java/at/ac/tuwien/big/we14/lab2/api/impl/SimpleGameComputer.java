@@ -4,7 +4,7 @@ import at.ac.tuwien.big.we14.lab2.api.*;
 
 public class SimpleGameComputer implements GameComputer{
 
-	private final String name = "QuizMaster";
+	private final String name = "Spieler 2";
 	/**
 	 * @return the score of the computer for a question
 	 * -> 50:50 chance of answering the question correctly
