@@ -641,7 +641,7 @@ public class SeleniumTest {
 			Matcher<String> player2nameMatcher = containsString(namePlayer2);
 			Matcher<String> drawMatcher = containsString("Unentschieden");
 			String roundWinner = driver.findElement(By.id(ID_ROUND_WINNER)).getText();
-
+			
 			errorCollector.checkThat(getTestInfoPrefix()
 					+ "Invalid round winner, conditional errors may occur", roundWinner,
 					anyOf(player2nameMatcher, player1nameMatcher, drawMatcher));
@@ -669,6 +669,8 @@ public class SeleniumTest {
 		errorCollector.checkThat("Inavlid number of round victories",
 				driver.findElement(By.id(ID_ROUND_VICTORIES_PLAYER_1)).getText(), containsString(""
 						+ player1Victories));
+		System.err.println("id player1: " + driver.findElement(By.id(ID_ROUND_VICTORIES_PLAYER_1)).getText()); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		System.err.println("id player2: " + driver.findElement(By.id(ID_ROUND_VICTORIES_PLAYER_2)).getText()); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		errorCollector.checkThat("Inavlid number of round victories",
 				driver.findElement(By.id(ID_ROUND_VICTORIES_PLAYER_2)).getText(), containsString(""
 						+ player2Victories));

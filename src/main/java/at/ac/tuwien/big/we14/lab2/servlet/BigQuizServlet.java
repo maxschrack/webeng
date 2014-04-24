@@ -189,20 +189,19 @@ public class BigQuizServlet extends HttpServlet {
 			 * round over -> Compute round winner or tie
 			 */
 			String winnerMessage = ""; // needed only for roundcomplete.jsp
-			RoundScore roundResult = computeRoundWinner(currentGame);
+			RoundScore roundResult = computeRoundWinner(currentGame); 
 			if (roundResult.equals(RoundScore.PLAYER1)) {
 				currentGame.setRoundScore(RoundScore.PLAYER1);
-				winnerMessage = currentPlayer.getName() + " gewinnt Runde "
-						+ (currentGame.getRound() + 1) + "!";
+				winnerMessage = "Spieler 1";
 			} else if (roundResult.equals(RoundScore.PLAYER2)) {
 				currentGame.setRoundScore(RoundScore.PLAYER2);
-				winnerMessage = currentAi.getName() + " gewinnt Runde "
-						+ (currentGame.getRound() + 1) + "!";
+				winnerMessage = "Spieler 2";
 			} else if (roundResult.equals(RoundScore.TIE)) {
 				currentGame.setRoundScore(RoundScore.TIE);
-				winnerMessage = "Runde " + (currentGame.getRound() + 1)
-						+ " geht UNETSCHIEDEN aus!";
+				winnerMessage = "Unentschieden";
 			}
+			
+			System.out.println("<-------------round results:  "+currentGame.getPlayer1Rounds() + " " + currentGame.getPlayer2Rounds()+"------------->");
 
 			if (currentGame.getRound() < (this.MAXROUNDS - 1)) {
 				/**
@@ -230,15 +229,15 @@ public class BigQuizServlet extends HttpServlet {
 					}
 				}
 				*/
-				
+				System.err.println("<-------------game over:  "+currentGame.getPlayer1Rounds() + " " + currentGame.getPlayer2Rounds()+"------------->");
 				// computer a winner or a TIE
 				String gameOverMessage = "";
 				if (currentGame.getPlayer1Rounds() > currentGame.getPlayer2Rounds()) {
-					gameOverMessage = currentPlayer.getName() + " gewinnt!";
+					gameOverMessage = "Spieler 1";
 				} else if (currentGame.getPlayer2Rounds() > currentGame.getPlayer1Rounds()) {
-					gameOverMessage = currentAi.getName() + " gewinnt";
+					gameOverMessage = "Spieler 2";
 				} else {
-					gameOverMessage = "Das Spiel endet Unetschieden!";
+					gameOverMessage = "Unentschieden";
 				}
 				request.setAttribute("gameOverMessage", gameOverMessage);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/finish.jsp");
@@ -286,12 +285,11 @@ public class BigQuizServlet extends HttpServlet {
 		int player1Wins = 0;
 		int player2Wins = 0;
 		for (int i = 0; i < 3; i++) {
-			if (currentGame.isQuestionCorrectPlayer1(i)) {
+			if (currentGame.isQuestionCorrectPlayer1(i)) 
 				player1Wins++;
-			}
-			if (currentGame.isQuestionCorrectPlayer2(i)) {
+			if (currentGame.isQuestionCorrectPlayer2(i)) 
 				player2Wins++;
-			}
+			
 		}
 		if (player1Wins > player2Wins) {// Player 1 wins the round (human)
 			return RoundScore.PLAYER1;

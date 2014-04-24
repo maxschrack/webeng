@@ -9,8 +9,8 @@ public class SimpleGame{
 	private RoundScore[] roundScores ={RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN};
 	private int roundTimePlayer1;//time taken to answer all questions in a round
 	private int roundTimePlayer2;
-	private int player1Rounds;
-	private int player2Rounds;
+	private int player1Rounds = 0;
+	private int player2Rounds = 0;
 
 	
 
@@ -26,8 +26,6 @@ public class SimpleGame{
 		this.questionNr = 0;
 		this.roundTimePlayer1 = 0;
 		this.roundTimePlayer2 = 0;
-		this.player1Rounds = 0;
-		this.player2Rounds = 0;
 	}
 	/**
 	 * @param questionNr the questionNr to set
@@ -119,20 +117,40 @@ public class SimpleGame{
 	}
 	
 	/**
-	 * sets the Round score
+	 * increases the roundscore for the winning player by 1 (if there is a winner)
 	 */
 	public void setRoundScore(RoundScore roundResult){
-		if(roundScores.equals(RoundScore.PLAYER1)){
+		if(roundResult.equals(RoundScore.PLAYER1)){
 			player1Rounds++;
-		}else if(roundScores.equals(RoundScore.PLAYER2)){
+		}else if(roundResult.equals(RoundScore.PLAYER2)){
 			player2Rounds++;
 		}
 		roundScores[round]=roundResult;
+		//round++;
 	}
 	
+	public void increasePlayer1Rounds()
+	{
+		player1Rounds++;
+	}
+	
+	public void increasePlayer2Rounds()
+	{
+		player2Rounds++;
+	}
+	
+	/**
+	 * amount of rounds that player1 has won
+	 * @return
+	 */
 	public int getPlayer1Rounds() {
 		return player1Rounds;
 	}
+	
+	/**
+	 * amount of rounds that player2 has won
+	 * @return
+	 */
 	public int getPlayer2Rounds() {
 		return player2Rounds;
 	}

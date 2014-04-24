@@ -41,7 +41,7 @@
                 </div>
                 <div id="player2info" class="playerinfo">
                     <span id="player2name" class="playername"><%=player2.getName()%></span>
-                    <p id="player2roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player2wonroundsX" class="playerwonrounds" value="<%=game.getPlayer2Rounds()%>"><%=request.getAttribute("player2Rounds")%></span></p>
+                    <p id="player2roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player2wonroundsX" class="playerwonrounds" ><%=game.getPlayer2Rounds()%></span></p>
                 	<input type="hidden" name="player2wonrounds" id="player2wonrounds" value="<%=request.getAttribute("player2Rounds")%>" />
                 </div>
                 <a id="next" href="BigQuizServlet?action=start" accesskey="n">Neues Spiel</a>
