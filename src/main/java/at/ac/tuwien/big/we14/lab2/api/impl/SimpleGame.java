@@ -9,6 +9,10 @@ public class SimpleGame{
 	private RoundScore[] roundScores ={RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN,RoundScore.OPEN};
 	private int roundTimePlayer1;//time taken to answer all questions in a round
 	private int roundTimePlayer2;
+	private int player1Rounds;
+	private int player2Rounds;
+
+	
 
 	public enum RoundScore{
 		PLAYER1,
@@ -22,6 +26,8 @@ public class SimpleGame{
 		this.questionNr = 0;
 		this.roundTimePlayer1 = 0;
 		this.roundTimePlayer2 = 0;
+		this.player1Rounds = 0;
+		this.player2Rounds = 0;
 	}
 	/**
 	 * @param questionNr the questionNr to set
@@ -116,7 +122,19 @@ public class SimpleGame{
 	 * sets the Round score
 	 */
 	public void setRoundScore(RoundScore roundResult){
+		if(roundScores.equals(RoundScore.PLAYER1)){
+			player1Rounds++;
+		}else if(roundScores.equals(RoundScore.PLAYER2)){
+			player2Rounds++;
+		}
 		roundScores[round]=roundResult;
+	}
+	
+	public int getPlayer1Rounds() {
+		return player1Rounds;
+	}
+	public int getPlayer2Rounds() {
+		return player2Rounds;
 	}
 
 }

@@ -205,7 +205,7 @@ public class BigQuizServlet extends HttpServlet {
 			} else {
 				/**
 				 * Game over
-				 */
+				 *
 				// compute round-wins for both players
 				int player1Rounds = 0;
 				int player2Rounds = 0;
@@ -216,18 +216,18 @@ public class BigQuizServlet extends HttpServlet {
 						player2Rounds++;
 					}
 				}
+				*/
+				
 				// computer a winner or a TIE
 				String gameOverMessage = "";
-				if (player1Rounds > player2Rounds) {
+				if (currentGame.getPlayer1Rounds() > currentGame.getPlayer2Rounds()) {
 					gameOverMessage = currentPlayer.getName() + " gewinnt!";
-				} else if (player2Rounds > player1Rounds) {
+				} else if (currentGame.getPlayer2Rounds() > currentGame.getPlayer1Rounds()) {
 					gameOverMessage = currentAi.getName() + " gewinnt";
 				} else {
 					gameOverMessage = "Das Spiel endet Unetschieden!";
 				}
 				request.setAttribute("gameOverMessage", gameOverMessage);
-				request.setAttribute("player1Rounds", player1Rounds);
-				request.setAttribute("player2Rounds", player2Rounds);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/finish.jsp");
 				dispatcher.forward(request, response);
 			}
