@@ -119,22 +119,46 @@ public class BigQuizServlet extends HttpServlet {
 			 * player marked answers
 			 */
 			List<String> playerAnswers = Arrays.asList(request.getParameterValues("option"));
+			
+			System.out.println("player answer: ");
+			for(String s : playerAnswers)
+				System.out.print(s + " ");
+			System.out.println();
+			
 			// retrieve time used by player to answer the question
 			int playerAnswerTime = Integer.parseInt((request.getParameter("timeleftvalue")));
 			// check if ALL answers are correct (if not => question not
 			// answered)
 			List<Choice> correctAnswers = answeredQuestion.getCorrectChoices();
-			if (correctAnswers.size() == playerAnswers.size()) {
-				for (Choice c : correctAnswers) {
-					if (!playerAnswers.contains(c.getId())) {
+			
+			System.out.println("correct answer: ");
+			for(Choice c : correctAnswers)
+				System.out.print(c.getId() + " ");
+			System.out.println();
+			
+			boolean correct = true;
+			if (correctAnswers.size() == playerAnswers.size()) 
+			{
+				for (Choice c : correctAnswers) 
+				{
+					System.out.println(playerAnswers.contains(String.valueOf(c.getId())) + ": player anwers do not contain the correct answer");
+					if (!playerAnswers.contains(String.valueOf(c.getId()))) 
+					{
 						currentGame.setPlayer1Score(questionNr, false);
 						currentGame.addRoundTimePlayer1(0);
+						correct = false;
 						break;
 					}
 				}
-				currentGame.setPlayer1Score(questionNr, true);
-				currentGame.addRoundTimePlayer1(playerAnswerTime);
-			} else {
+				
+				if(correct == true)
+				{
+					currentGame.setPlayer1Score(questionNr, true);
+					currentGame.addRoundTimePlayer1(playerAnswerTime);
+				}
+			} 
+			else 
+			{
 				currentGame.setPlayer1Score(questionNr, false);
 				currentGame.addRoundTimePlayer1(0);
 			}
