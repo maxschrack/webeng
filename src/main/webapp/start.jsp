@@ -26,5 +26,11 @@
         </section>
         <!-- footer -->
         <footer role="contentinfo">© 2014 BIG Quiz</footer>
+        <SCRIPT type="text/javascript">
+        $(document).ready(function()
+        {
+        	localStorage.clear();
+        });
+        </SCRIPT>
     </body>
 </html>

@@ -91,7 +91,7 @@
                 <meter id="timermeter" min="0" low="20" value="100" max="100"/>
             </section>
             <section id="lastgame">
-                <p>Letztes Spiel: Nie</p>
+                <p id="last"></p>
             </section>
         </section>
 
@@ -100,19 +100,25 @@
         
         <script type="text/javascript">
             //<![CDATA[
-            
+            	
             // initialize time
             $(document).ready(function() {
                 var maxtime = 30;
                 var hiddenInput = $("#timeleftvalue");
                 var meter = $("#timer meter");
                 var timeleft = $("#timeleft");
+                var lastGame = $("#last");
                 
                 hiddenInput.val(maxtime);
                 meter.val(maxtime);
                 meter.attr('max', maxtime);
                 meter.attr('low', maxtime/100*20);
                 timeleft.text(secToMMSS(maxtime));
+                
+                if(localStorage.getItem("lastGame") == null || !supportsLocalStorage())
+                	lastGame.text("Letztes Spiel: Nie");
+                else
+               		lastGame.text("Letztes Spiel: " + localStorage.getItem("lastGame"));
             });
             
             // update time
@@ -125,6 +131,7 @@
                 if(value > 0) {
                     value = value - 1;   
                 }
+                
                 
                 hiddenInput.val(value);
                 meter.val(value);
