@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,11 +26,11 @@
         </section>
         <!-- footer -->
         <footer role="contentinfo">© 2014 BIG Quiz</footer>
-        <SCRIPT type="text/javascript">
+        <script type="text/javascript">
         $(document).ready(function()
         {
         	localStorage.clear();
         });
-        </SCRIPT>
+        </script>
     </body>
 </html>
