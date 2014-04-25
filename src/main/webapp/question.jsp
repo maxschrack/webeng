@@ -91,7 +91,7 @@
                 <meter id="timermeter" min="0" low="20" value="100" max="100"/>
             </section>
             <section id="lastgame">
-                <p id="last"></p>
+                <p id="last">Letztes Spiel: </p>
             </section>
         </section>
 
@@ -116,9 +116,9 @@
                 timeleft.text(secToMMSS(maxtime));
                 
                 if(localStorage.getItem("lastGame") == null || !supportsLocalStorage())
-                	lastGame.text("Letztes Spiel: Nie");
+                	lastGame.append("Nie");
                 else
-               		lastGame.text("Letztes Spiel: " + localStorage.getItem("lastGame"));
+               		lastGame.append(localStorage.getItem("lastGame"));
             });
             
             // update time
