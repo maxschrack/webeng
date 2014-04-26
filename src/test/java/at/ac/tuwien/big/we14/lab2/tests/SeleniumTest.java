@@ -669,8 +669,6 @@ public class SeleniumTest {
 		errorCollector.checkThat("Inavlid number of round victories",
 				driver.findElement(By.id(ID_ROUND_VICTORIES_PLAYER_1)).getText(), containsString(""
 						+ player1Victories));
-		System.err.println("id player1: " + driver.findElement(By.id(ID_ROUND_VICTORIES_PLAYER_1)).getText()); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		System.err.println("id player2: " + driver.findElement(By.id(ID_ROUND_VICTORIES_PLAYER_2)).getText()); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		errorCollector.checkThat("Inavlid number of round victories",
 				driver.findElement(By.id(ID_ROUND_VICTORIES_PLAYER_2)).getText(), containsString(""
 						+ player2Victories));

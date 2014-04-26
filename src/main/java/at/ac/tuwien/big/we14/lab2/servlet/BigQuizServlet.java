@@ -192,10 +192,10 @@ public class BigQuizServlet extends HttpServlet {
 			RoundScore roundResult = computeRoundWinner(currentGame); 
 			if (roundResult.equals(RoundScore.PLAYER1)) {
 				currentGame.setRoundScore(RoundScore.PLAYER1);
-				winnerMessage = "Spieler 1";
+				winnerMessage = "Spieler 1 gewinnt die Runde";
 			} else if (roundResult.equals(RoundScore.PLAYER2)) {
 				currentGame.setRoundScore(RoundScore.PLAYER2);
-				winnerMessage = "Spieler 2";
+				winnerMessage = "Spieler 2 gewinnt die Runde";
 			} else if (roundResult.equals(RoundScore.TIE)) {
 				currentGame.setRoundScore(RoundScore.TIE);
 				winnerMessage = "Unentschieden";
@@ -233,9 +233,9 @@ public class BigQuizServlet extends HttpServlet {
 				// computer a winner or a TIE
 				String gameOverMessage = "";
 				if (currentGame.getPlayer1Rounds() > currentGame.getPlayer2Rounds()) {
-					gameOverMessage = "Spieler 1";
+					gameOverMessage = "Spieler 1 gewinnt das Spiel";
 				} else if (currentGame.getPlayer2Rounds() > currentGame.getPlayer1Rounds()) {
-					gameOverMessage = "Spieler 2";
+					gameOverMessage = "Spieler 2 gewinnt das Spiel";
 				} else {
 					gameOverMessage = "Unentschieden";
 				}

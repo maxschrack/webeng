@@ -36,7 +36,6 @@
                 <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
                 <% int questionNr = game.getQuestionNr(); %>
                 <div id="player1info" class="playerinfo">
-                	<!-- <input type="hidden" id="player1wonrounds" value="<%=game.getPlayer1Rounds()%>" /> -->
                     <span id="player1name" class="playername"><%=player1.getName()%></span>
                     <ul class="playerroundsummary">
                     <%for(int i=0; i<3;i++){ %>
@@ -51,9 +50,8 @@
                     </ul>
                      <p id="player1roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player1wonrounds" class="playerwonrounds"><%=game.getPlayer1Rounds()%></span></p>
                 </div>
-                <div id="player2info">
-                	<!-- <input type="hidden" id="player2wonrounds" value="<%=game.getPlayer2Rounds()%>" /> -->
-                    <span id="player2name"><%=player2.getName()%></span>
+                <div id="player2info" class="playerinfo" class="playerinfo">
+                    <span id="player2name" class="playername"><%=player2.getName()%></span>
                     <ul class="playerroundsummary">
                        <%for(int i=0; i<3;i++){ %>
                     	<% if(i>=questionNr){ %>
