@@ -5,7 +5,7 @@
 <jsp:useBean id="player1" class="at.ac.tuwien.big.we14.lab2.api.impl.SimplePlayer" scope="session"/>
 <jsp:useBean id="player2" class="at.ac.tuwien.big.we14.lab2.api.impl.SimpleGameComputer" scope="session"/>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,7 +50,7 @@
                     </ul>
                      <p id="player1roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player1wonrounds" class="playerwonrounds"><%=game.getPlayer1Rounds()%></span></p>
                 </div>
-                <div id="player2info" class="playerinfo" class="playerinfo">
+                <div id="player2info" class="playerinfo">
                     <span id="player2name" class="playername"><%=player2.getName()%></span>
                     <ul class="playerroundsummary">
                        <%for(int i=0; i<3;i++){ %>
