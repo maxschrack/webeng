@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/webapp/WEB-INF=UTF-8
+encoding//src/test/java=UTF-8
 encoding//src/test/java/at/ac/tuwien/big/we14/lab2/tests/SeleniumTest.java=UTF-8
+encoding/<project>=UTF-8
