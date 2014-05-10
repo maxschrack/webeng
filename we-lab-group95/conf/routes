@@ -13,5 +13,10 @@ GET		/game_index					controllers.Game.index()
 
 GET     /logout                     controllers.Application.logout()
 
+
+GET     /startNewGame               controllers.Game.startNewGame()
+GET     /startNewRound              controllers.Game.startNewRound()
+GET     /showQuestion               controllers.Game.showQuestion()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

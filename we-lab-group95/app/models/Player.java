@@ -16,8 +16,7 @@ import play.data.validation.ValidationError;
 import javax.persistence.*;
 
 @Entity
-public class Player {
-
+public class Player implements at.ac.tuwien.big.we14.lab2.api.User{
 
 	public enum Geschlecht {
 		maennlich, weiblich
@@ -25,43 +24,20 @@ public class Player {
 	
 	private String vorname;
 	private String nachname;
-	
 	private String geburtsdatum;
-	/*
-	public List<ValidationError> validate() {
-		List<ValidationError> errors = null;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		dateFormat.setLenient(false);
- 
-		try {
-			// Wenn das GebDat nicht geparst werden kann, wird eine Exception geworfen
-			Date date = dateFormat.parse(geburtsdatum);
-			System.out.println(date);
- 
-		} catch (ParseException e) {
-			errors = new ArrayList<ValidationError>();
-			errors.add(new ValidationError("geburtsdatum", "Das Datum muss vom Forma DD/MM/YYYY sein!"));
-		}
-		return errors;
-	}
-	*/
-	
 	private Geschlecht geschlecht;
-	
 	@Id
 	@Constraints.Required
 	@Constraints.MinLength(4)
 	@Constraints.MaxLength(8)
 	private String benutzername;
-	
 	@Constraints.Required
 	@Constraints.MinLength(4)
 	@Constraints.MaxLength(8)
 	private String passwort;
 	
-	
-	
 	public Player() {
+		
 	}
 	
 	public Player(String vorname, String nachname, String geburtsdatum,
@@ -121,6 +97,33 @@ public class Player {
 	public void setPasswort(String passwort) {
 		this.passwort = passwort;
 	}
+
+	public String getName() {
+		return benutzername;
+	}
+
+	public void setName(String name) {
+		this.benutzername = name;
+	}
+	
+	/*
+	public List<ValidationError> validate() {
+		List<ValidationError> errors = null;
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		dateFormat.setLenient(false);
+ 
+		try {
+			// Wenn das GebDat nicht geparst werden kann, wird eine Exception geworfen
+			Date date = dateFormat.parse(geburtsdatum);
+			System.out.println(date);
+ 
+		} catch (ParseException e) {
+			errors = new ArrayList<ValidationError>();
+			errors.add(new ValidationError("geburtsdatum", "Das Datum muss vom Forma DD/MM/YYYY sein!"));
+		}
+		return errors;
+	}
+	*/
 }
 
 
