@@ -27,17 +27,33 @@
                 <div id="player1info">
                     <span id="player1name">@game.getPlayers().get(0).getName()</span>
                     <ul class="playerroundsummary">
+                    @for(i<-0 to 2){
+                    @if(game.getCurrentRound().getAnswer(i,game.getPlayers.get(0)) == null){
+                    	<li><span class="accessibility">Frage 3:</span><span id="player2answer3" class="unknown">Unbekannt</span></li>
+                    }else {
+                    @if(game.getCurrentRound().getAnswer(i,game.getPlayers.get(0)).isCorrect()){
                         <li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
+                    }else{
                         <li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
-                        <li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+                        }
+                    }
+                    }
                     </ul>
                 </div>
                 <div id="player2info">
                     <span id="player2name">@game.getPlayers().get(1).getName()</span>
                     <ul class="playerroundsummary">
-                        <li><span class="accessibility">Frage 1:</span><span id="player2answer1" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 2:</span><span id="player2answer2" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 3:</span><span id="player2answer3" class="unknown">Unbekannt</span></li>
+                     @for(i<-0 to 2){
+                    @if(game.getCurrentRound().getAnswer(i,game.getPlayers.get(1)) == null){
+                    	<li><span class="accessibility">Frage 3:</span><span id="player2answer3" class="unknown">Unbekannt</span></li>
+                    }else {
+                    @if(game.getCurrentRound().getAnswer(i,game.getPlayers.get(1)).isCorrect()){
+                        <li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
+                    }else{
+                        <li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
+                        }
+                    }
+                    }
                     </ul>
                 </div>
                 <div id="currentcategory"><span class="accessibility">Kategorie:</span>@game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getCategory().getName()</div>
@@ -50,9 +66,10 @@
                     <p id="questiontext">@game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getText()</p>
                     <ul id="answers">
                     	@for(choice <- game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getAllChoices()) {
-                    		<li><input id="@choice.getId()" type="checkbox"/><label for="@choice.getId()">@choice.getText()</label></li>
-                    	}</ul>
-                    <input id="timeleftvalue" type="hidden" value="100"/>
+                    		<li><input id="@choice.getId()" name="@choice.getId()" type="checkbox"/><label for="@choice.getId()">@choice.getText()</label></li>
+                    	}
+                    </ul>
+                    <input id="timeleftvalue" name="timeleftvalue" type="hidden" value="100"/>
                     <input id="next" type="submit" value="weiter" accesskey="s"/>
                 }
             </section>
