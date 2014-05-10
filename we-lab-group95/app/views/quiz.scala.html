@@ -1,4 +1,4 @@
-@(game: at.ac.tuwien.big.we14.lab2.api.QuizGame, choices: List[at.ac.tuwien.big.we14.lab2.api.Choice])
+@(game: at.ac.tuwien.big.we14.lab2.api.QuizGame)
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -49,7 +49,7 @@
                     <h2 id="questionheading" class="accessibility">Frage</h2>
                     <p id="questiontext">@game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getText()</p>
                     <ul id="answers">
-                    	@for(choice <- choices) {
+                    	@for(choice <- game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getAllChoices()) {
                     		<li><input id="@choice.getId()" type="checkbox"/><label for="@choice.getId()">@choice.getText()</label></li>
                     	}</ul>
                     <input id="timeleftvalue" type="hidden" value="100"/>

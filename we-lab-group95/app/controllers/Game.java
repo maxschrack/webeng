@@ -51,8 +51,7 @@ public class Game extends Controller{
 		if(game.isRoundOver()){
 			return redirect(routes.Game.roundOver());
 		}
-		List<Choice> choices = (List<Choice>) game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getAllChoices();
-		return ok(quiz.render(game, choices));
+		return ok(quiz.render(game));
 	}
 	
 	@play.db.jpa.Transactional
