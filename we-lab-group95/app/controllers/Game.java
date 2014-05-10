@@ -57,11 +57,12 @@ public class Game extends Controller{
 	
 	@play.db.jpa.Transactional
 	@Security.Authenticated(Secured.class)
-	public static Result validateQuestion(){ 	
+	public static Result validateQuestion(){
 		QuizGame game = (QuizGame)Cache.get("game");
+		
 		// Form verarbeiten
 		// Sieger ermitteln
-		
+		// game.answerCurrentQuestion(...)
 		return redirect(routes.Game.showQuestion());
 	}
 	
@@ -78,6 +79,7 @@ public class Game extends Controller{
 	@play.db.jpa.Transactional
 	@Security.Authenticated(Secured.class)
 	public static Result gameOver(){
-		return ok(quizover.render());
+		QuizGame game = (QuizGame)Cache.get("game");
+		return ok(quizover.render(game));
 	}
 }

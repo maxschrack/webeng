@@ -46,7 +46,6 @@
             <!-- Question -->
             <section id="question" aria-labelledby="questionheading">
                 @helper.form(action = routes.Game.validateQuestion) {
-                <!--  <form id="questionform" action="question.html" method="post"> -->
                     <h2 id="questionheading" class="accessibility">Frage</h2>
                     <p id="questiontext">@game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getText()</p>
                     <ul id="answers">
@@ -55,7 +54,6 @@
                     	}</ul>
                     <input id="timeleftvalue" type="hidden" value="100"/>
                     <input id="next" type="submit" value="weiter" accesskey="s"/>
-                <!--  </form> -->
                 }
             </section>
             
