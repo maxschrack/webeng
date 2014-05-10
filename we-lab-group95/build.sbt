@@ -7,7 +7,8 @@ libraryDependencies ++= Seq(
   javaCore,
   javaJpa,
   "org.hibernate" % "hibernate-entitymanager" % "4.3.1.Final",
-  "com.google.code.gson" % "gson" % "2.2"
+  "com.google.code.gson" % "gson" % "2.2",
+  cache
 )     
 
 templatesImport += "scala.collection._"

@@ -1,4 +1,4 @@
-@(form: Form[Game])
+@(game: at.ac.tuwien.big.we14.lab2.api.QuizGame, choices: List[at.ac.tuwien.big.we14.lab2.api.Choice])
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -25,7 +25,7 @@
             <section id="roundinfo" aria-labelledby="roundinfoheading">
                 <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
                 <div id="player1info">
-                    <span id="player1name">Spieler 1</span>
+                    <span id="player1name">@game.getPlayers().get(0).getName()</span>
                     <ul class="playerroundsummary">
                         <li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
                         <li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
@@ -33,28 +33,26 @@
                     </ul>
                 </div>
                 <div id="player2info">
-                    <span id="player2name">Spieler 2</span>
+                    <span id="player2name">@game.getPlayers().get(1).getName()</span>
                     <ul class="playerroundsummary">
                         <li><span class="accessibility">Frage 1:</span><span id="player2answer1" class="correct">Richtig</span></li>
                         <li><span class="accessibility">Frage 2:</span><span id="player2answer2" class="correct">Richtig</span></li>
                         <li><span class="accessibility">Frage 3:</span><span id="player2answer3" class="unknown">Unbekannt</span></li>
                     </ul>
                 </div>
-                <div id="currentcategory"><span class="accessibility">Kategorie:</span> Sport</div>
+                <div id="currentcategory"><span class="accessibility">Kategorie:</span>@game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getCategory().getName()</div>
             </section>
             
             <!-- Question -->
             <section id="question" aria-labelledby="questionheading">
-                @helper.form(action = routes.Game.showQuestion) {
+                @helper.form(action = routes.Game.validateQuestion) {
                 <!--  <form id="questionform" action="question.html" method="post"> -->
                     <h2 id="questionheading" class="accessibility">Frage</h2>
-                    <p id="questiontext">Welche zwei LVAs werden im Model EWA zusammengefasst?</p>
+                    <p id="questiontext">@game.getCurrentRound().getCurrentQuestion(game.getPlayers().get(0)).getText()</p>
                     <ul id="answers">
-                        <li><input id="option1" type="checkbox"/><label for="option1">IT Strategie</label></li>
-                        <li><input id="option2" type="checkbox"/><label for="option2">Web Engineering</label></li>
-                        <li><input id="option3" type="checkbox"/><label for="option3">Semistrukturierte Daten</label></li>
-                        <li><input id="option4" type="checkbox"/><label for="option4">Objektorientierte Modellierung</label></li>
-                    </ul>
+                    	@for(choice <- choices) {
+                    		<li><input id="@choice.getId()" type="checkbox"/><label for="@choice.getId()">@choice.getText()</label></li>
+                    	}</ul>
                     <input id="timeleftvalue" type="hidden" value="100"/>
                     <input id="next" type="submit" value="weiter" accesskey="s"/>
                 <!--  </form> -->
