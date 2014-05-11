@@ -1,0 +1,35 @@
+register.notRegistered=Nicht registriert?
+login.name=Benutzername
+login.pw=Passwort
+register.login=Anmelden
+register.toRegister=Zur Registrierung
+
+personalData.personalData=Persönliche Daten
+personalData.firstName=Vorname
+personalData.lastName=Nachname
+personalData.birthdate=Geburtstag
+personalData.sex=Geschlecht
+sex.male=männlich
+sex.female=weiblich
+loginData.loginData=Login Daten
+loginData.userName=Benutzername*
+loginData.pw=Passwort*
+info.star=Mit "*" gekennzeichnete Felder sind Pflichtfelder
+register.register=Registrieren
+button.signIn=Anmelden
+
+link.roundEvaluation=Zur Rundenwertung springen
+link.logout=Abmelden
+info.roundScore=Rundenzwischenstand
+info.playerInformation=Spielerinformation
+info.playerWinner=gewinnt Runde
+rounds.won=Gewonnene Runden:
+link.next=Weiter
+
+button.signOut=Abmelden
+game.last=Letztes Spiel:
+time.left=Verbleibende Zeit
+button.startQuiz=Quiz starten
+label.result=Endstand
+label.win=gewinnt!
+button.newGame=Neues Spiel

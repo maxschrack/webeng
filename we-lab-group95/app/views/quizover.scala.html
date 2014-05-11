@@ -16,20 +16,20 @@
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="logoutlink" title="Klicke hier um dich abzumelden" href="@routes.Application.logout()" accesskey="l">Abmelden</a></li>
+                <li><a id="logoutlink" title="Klicke hier um dich abzumelden" href="@routes.Application.logout()" accesskey="l">@Messages("button.SignOut")</a></li>
             </ul>
         </nav>
         
         <section role="main">
             <!-- winner message -->
             <section id="roundwinner" aria-labelledby="roundwinnerheading">
-                <h2 id="roundwinnerheading" class="accessibility">Endstand</h2>
-                <p class="roundwinnermessage">@game.getWinner().getName() gewinnt!</p>
+                <h2 id="roundwinnerheading" class="accessibility">@Messages("label.result")</h2>
+                <p class="roundwinnermessage">@game.getWinner().getName() @Messages("label.win")</p>
             </section>
         
             <!-- round info -->    
             <section id="roundinfo" aria-labelledby="roundinfoheading">
-                <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
+                <h2 id="roundinfoheading" class="accessibility">@Messages("info.playerInformation")</h2>
                 <div id="player1info" class="playerinfo">
                     <span id="player1name" class="playername">@game.getPlayers().get(0).getName()</span>
                     <p id="player1roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player1wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(0))</span></p>
@@ -38,7 +38,7 @@
                     <span id="player2name" class="playername">@game.getPlayers().get(1).getName()</span>
                     <p id="player2roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player2wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(1))</span></p>
                 </div>
-                <a id="next" href="@routes.Game.startNewGame()" accesskey="n">Neues Spiel</a>
+                <a id="next" href="@routes.Game.startNewGame()" accesskey="n">@Messages("button.NewGame")</a>
             </section>
         </section>
        

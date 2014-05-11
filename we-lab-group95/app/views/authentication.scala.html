@@ -29,9 +29,9 @@
                     <fieldset>
                         <legend id="loginheading">Login</legend>
                          @helper.form(action = routes.Application.validatePlayer) {
-                          @helper.inputText(form("benutzername"), '_showConstraints -> false)
-                          @helper.inputPassword(form("passwort"), '_showConstraints -> false)
-                        <input id="loginsubmit" type="submit" value="Anmelden"/>
+                          @helper.inputText(form("benutzername"), '_label -> Messages("login.name"), '_showConstraints -> false)
+                          @helper.inputPassword(form("passwort"), '_label -> Messages("login.pw"), '_showConstraints -> false)
+                        <input id="loginsubmit" type="submit" value="@Messages("register.login")"/>
                         }
                          @if(form.hasGlobalErrors) {
     						<p class="error">
@@ -44,8 +44,8 @@
             <!-- Register section -->
             <section id="register" aria-labelledby="registerheading">
                 <h2 id="registerheading" class="accessibility">Registrierung</h2>
-                <p>Nicht registriert?</p>
-                <a href="registration">Zur Registierung</a>
+                <p>@Messages("register.notRegistered")</p>
+                <a href="registration">@Messages("register.toRegister")</a>
             </section>
         </section>
 

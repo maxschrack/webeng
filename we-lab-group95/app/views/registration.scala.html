@@ -16,7 +16,7 @@
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="loginlink" title="Klicke hier um dich anzumelden" href="#" accesskey="l">Anmelden</a></li>
+                <li><a id="loginlink" title="Klicke hier um dich anzumelden" href="#" accesskey="l">@Messages("button.signIn")</a></li>
             </ul>
         </nav>
         <section role="main" id="register" aria-labelledby="registerheading">
@@ -24,18 +24,18 @@
             <h2 id="registerheading" class="accessibility">Registrierung</h2>
             @helper.form(action = routes.Application.createPlayer) {
             <fieldset>
-                    <legend>Persönliche Daten</legend>
-                    @helper.inputText(form("vorname"))
-                    @helper.inputText(form("nachname"))
-                    @helper.inputText(form("geburtstag"))
-                    @helper.select(field = form("geschlecht"), options = Seq("maennlich"->"Männlich", "weiblich"->"Weiblich"))
+                    <legend>@Messages("personalData.personalData")</legend>
+                    @helper.inputText(form("vorname"), '_label -> Messages("personalData.firstName"))
+                    @helper.inputText(form("nachname"), '_label -> Messages("personalData.lastName"))
+                    @helper.inputText(form("geburtstag"), '_label -> Messages("personalData.birthdate"))
+                    @helper.select(field = form("geschlecht"), args = '_label -> Messages("personalData.sex"), options = Seq("maennlich"-> Messages("sex.male"), "weiblich"-> Messages("sex.female")))
                 </fieldset>
                 <fieldset>
-                    <legend>Login Daten</legend>
-					@helper.inputText(form("benutzername"), '_showConstraints -> false)
-                    @helper.inputPassword(form("passwort"), '_showConstraints -> false)
-                    <input id="registersubmit" type="submit" value="Registrieren" accesskey="s"/>
-                    <p id="requiredhint">Mit "*" gekennzeichnete Felder sind Pflichtfelder</p>
+                    <legend>@Messages("loginData.loginData")</legend>
+					@helper.inputText(form("benutzername"), '_label -> Messages("loginData.userName") , '_showConstraints -> false)
+                    @helper.inputPassword(form("passwort"), '_label -> Messages("loginData.pw") , '_showConstraints -> false)
+                    <input id="registersubmit" type="submit" value="@Messages("register.register")" accesskey="s"/>
+                    <p id="requiredhint">@Messages("info.star")</p>
                 </fieldset>
             }
         </section>

@@ -1,0 +1,35 @@
+register.notRegistered=Not registered?
+login.name=Username
+login.pw=Password
+register.login=Login
+register.toRegister=To registration
+
+personalData.personalData=Personal data
+personalData.firstName=First name
+personalData.lastName=Last name
+personalData.birthdate=Birthdate
+personalData.sex=Sex
+sex.male=Male
+sex.female=Female
+loginData.loginData=Login data
+loginData.userName=Username*
+loginData.pw=Password*
+info.star=Fields with "*" are mandatory fields
+register.register=Register
+button.signIn=Sign in
+
+link.roundEvaluation=Go to roundscore
+link.logout=Logout
+info.roundScore=Round score
+info.playerInformation=Player information
+info.playerWinner=wins the round
+rounds.won=Won rounds:
+link.next=Next
+
+button.signOut=Sign out
+game.last=Last game:
+time.left=Time left
+button.startQuiz=Start quiz
+label.result=Result
+label.win=wins!
+button.newGame=New Game

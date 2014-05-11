@@ -16,15 +16,15 @@
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="logoutlink" title="Klicke hier um dich abzumelden" href="@routes.Application.logout()" accesskey="l">Abmelden</a></li>
+                <li><a id="logoutlink" title="Klicke hier um dich abzumelden" href="@routes.Application.logout()" accesskey="l">@Messages("link.logout")</a></li>
             </ul>
         </nav>
         
         <section role="main">
             <!-- winner message -->
             <section id="roundwinner" aria-labelledby="roundwinnerheading">
-                <h2 id="roundwinnerheading" class="accessibility">Rundenzwischenstand</h2>
-                <p class="roundwinnermessage">@game.getCurrentRound().getRoundWinner().getName() gewinnt Runde @game.getCurrentRoundCount() !</p>
+                <h2 id="roundwinnerheading" class="accessibility">@Messages("info.roundScore")</h2>
+                <p class="roundwinnermessage">@game.getCurrentRound().getRoundWinner().getName() @Messages("info.playerWinner") @game.getCurrentRoundCount() !</p>
             </section>
         
             <!-- round info -->    
@@ -45,7 +45,7 @@
                     }
                     }  
                      </ul>
-                    <p id="player1roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player1wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(0))</span></p>
+                    <p id="player1roundcounter" class="playerroundcounter">@Messages("rounds.won")<span id="player1wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(0))</span></p>
                 </div>
                 <div id="player2info" class="playerinfo">
                     <span id="player2name" class="playername">@game.getPlayers().get(1).getName()</span>
@@ -62,9 +62,9 @@
                     }
                     }   
                      </ul>
-                    <p id="player2roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player2wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(1))</span></p>
+                    <p id="player2roundcounter" class="playerroundcounter">@Messages("rounds.won")<span id="player2wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(1))</span></p>
                 </div>
-                <a id="next" href="startNewRound">Weiter</a>
+                <a id="next" href="startNewRound">@Messages("link.next")</a>
             </section>
         </section>
 

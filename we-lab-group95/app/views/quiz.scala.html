@@ -16,14 +16,14 @@
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="logoutlink" title="Klicke hier um dich abzumelden" href="#" accesskey="l">Abmelden</a></li>
+                <li><a id="logoutlink" title="Klicke hier um dich abzumelden" href="#" accesskey="l">@Messages("button.signOut")</a></li>
             </ul>
         </nav>
         
         <!-- round info -->
         <section role="main">
             <section id="roundinfo" aria-labelledby="roundinfoheading">
-                <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
+                <h2 id="roundinfoheading" class="accessibility">@Messages("info.playerInformation")</h2>
                 <div id="player1info">
                     <span id="player1name">@game.getPlayers().get(0).getName()</span>
                     <ul class="playerroundsummary">
@@ -70,18 +70,18 @@
                     	}
                     </ul>
                     <input id="timeleftvalue" name="timeleftvalue" type="hidden" value="100"/>
-                    <input id="next" type="submit" value="weiter" accesskey="s"/>
+                    <input id="next" type="submit" value="@Messages("link.next")" accesskey="s"/>
                 }
             </section>
             
             <section id="timer" aria-labelledby="timerheading">
                 <h2 id="timerheading" class="accessibility">Timer</h2>
-                <p><span id="timeleftlabel">Verbleibende Zeit:</span> <time id="timeleft">00:30</time></p>
+                <p><span id="timeleftlabel">@Messages("time.left")</span> <time id="timeleft">00:30</time></p>
                 <meter id="timermeter" min="0" low="20" value="100" max="100"/>
             </section>
             
             <section id="lastgame">
-                <p>Letztes Spiel: Nie</p>
+                <p>@Messages("game.last") Nie</p>
             </section>
         </section>
 
@@ -109,7 +109,7 @@
 		            var lastGameMillis = parseInt(localStorage['lastGame'])
 		            if(!isNaN(parseInt(localStorage['lastGame']))){
 		                var lastGame = new Date(lastGameMillis);
-		            	$("#lastgame p").replaceWith('<p>Letztes Spiel: <time datetime="'
+		            	$("#lastgame p").replaceWith('<p>@Messages("game.last") <time datetime="'
 		            			+ lastGame.toUTCString()
 		            			+ '">'
 		            			+ lastGame.toLocaleString()
