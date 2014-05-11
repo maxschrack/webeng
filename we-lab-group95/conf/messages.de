@@ -33,3 +33,5 @@ button.startQuiz=Quiz starten
 label.result=Endstand
 label.win=gewinnt!
 button.newGame=Neues Spiel
+
+test=de

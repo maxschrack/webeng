@@ -11,8 +11,10 @@ import at.ac.tuwien.big.we14.lab2.api.impl.*;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.jpa.JPA;
+import play.i18n.Messages;
 import play.mvc.*;
 import views.html.*;
+import play.api.i18n.Lang;
 import play.cache.Cache;
 
 public class Game extends Controller {
@@ -29,8 +31,13 @@ public class Game extends Controller {
 	@Security.Authenticated(Secured.class)
 	public static Result startNewGame() {
 		EntityManager em = JPA.em();
-		QuizFactory factory = new PlayQuizFactory(lang_data, em.find(
-				Player.class, session().get("user")));
+		
+		String test = Messages.get("test");
+		if(test.equals("en") || test.equals("en-US"))
+			lang_data ="conf/data.en.json";
+		else
+			lang_data ="conf/data.de.json";
+		QuizFactory factory = new PlayQuizFactory(lang_data, em.find(Player.class, session().get("user")));
 		QuizGame game = factory.createQuizGame();
 		// store current game in cache
 		Cache.set(session().get("user")+"game", game);

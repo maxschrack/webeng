@@ -32,4 +32,6 @@ time.left=Time left
 button.startQuiz=Start quiz
 label.result=Result
 label.win=wins!
-button.newGame=New Game
+button.NewGame=New Game
+
+test=en

@@ -6,6 +6,8 @@ import models.Player;
 import play.*;
 import play.data.Form;
 import play.db.jpa.JPA;
+import play.i18n.Lang;
+import play.i18n.Messages;
 import play.mvc.*;
 import views.html.index;
 import views.html.authentication;
@@ -33,6 +35,7 @@ public class Application extends Controller {
 	@play.db.jpa.Transactional
     public static Result createPlayer() {
 		Form<Player> form = Form.form(Player.class).bindFromRequest(); 
+		Messages.get("dasd");
 		if (form.hasErrors()) { 
 			return badRequest(registration.render(form)); 
 		} else { 
@@ -73,7 +76,13 @@ public class Application extends Controller {
 	@play.db.jpa.Transactional
 	public static Result logout() {
 	    session().clear();
-	    flash("success", "Sie haben sich abgemeldet.");
+	    String lang = Messages.get("test");
+	    if(lang.equals("de"))
+	    	flash("success", "Sie haben sich abgemeldet.");
+	    else if(lang.equals("en"))
+	    	flash("success", "Your are logged out.");	
+	    else if(lang.equals("en-US"))
+	    	flash("success", "Your are logged out.");
 	    return redirect(routes.Application.authentication());
 	}
 }
